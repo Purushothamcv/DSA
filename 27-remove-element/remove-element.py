@@ -5,11 +5,9 @@ class Solution(object):
         :type val: int
         :rtype: int
         """
-        k = 0  # Counter for elements not equal to val
-    
+        k=0
         for i in range(len(nums)):
-            if nums[i] != val:
-                nums[k] = nums[i]  # Move valid element to the front
-                k += 1  # Increment count of valid elements
-        
+            if nums[i]!=val:
+                nums[k]=nums[i]
+                k+=1
         return k
