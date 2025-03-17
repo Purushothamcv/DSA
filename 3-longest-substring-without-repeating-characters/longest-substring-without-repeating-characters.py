@@ -4,18 +4,15 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        maxlen=0
+        left=right=0
         n=len(s)
-        
-        for i in range(n):
-            hashi={}
-            for j in range(i,n):
-                if hashi.get(s[j],0)==1:
-                    break
-                length=j-i+1
-                maxlen=max(length,maxlen)
-                hashi[s[j]]=1
-
+        h={}
+        maxlen=0
+        for right in range(n):
+            if s[right]  in h and h[s[right]]>=left:
+                left=h[s[right]]+1
+            h[s[right]]=right
+            maxlen=max(maxlen,right-left+1)
         return maxlen
                 
             
