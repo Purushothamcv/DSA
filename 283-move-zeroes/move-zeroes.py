@@ -3,15 +3,15 @@ class Solution(object):
         """
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
-         """
-        index=0
+        """
         n=len(nums)
-        for i in range(n):
-            if nums[i]!=0:
-                nums[index]=nums[i]
-                index+=1
-        while index<len(nums):
-            nums[index] = 0
-            index += 1
-
-                
+    
+        left=0
+        right=0
+        for right in range(n):
+            if nums[right]!=0:
+                nums[right],nums[left]=nums[left],nums[right]
+                right+=1
+                left+=1
+            right+=1
+        return nums
