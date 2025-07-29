@@ -4,9 +4,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        current_sum=nums[0]
-        max_sum=nums[0]
-        for i in nums[1:len(nums)]:
-            current_sum=max(i,current_sum+i)
-            max_sum=max(current_sum,max_sum)
-        return max_sum
+        ma=float('-inf')
+        if len(nums)==1:
+            return nums[0]
+        summ=float('-inf')
+        best=float('-inf')
+        for i in range(len(nums)):
+            summ=max(nums[i],summ+nums[i])
+            best=max(best,summ)
+            
+        return best
+                
+
+
+
+        
