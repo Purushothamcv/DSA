@@ -10,9 +10,8 @@ class Solution(object):
         summ=float('-inf')
         best=float('-inf')
         for i in range(len(nums)):
-            summ=max(nums[i],summ+nums[i])
-            best=max(best,summ)
-            
+            summ=max(nums[i],nums[i]+summ)
+            best=max(summ,best)
         return best
                 
 
