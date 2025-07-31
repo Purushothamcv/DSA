@@ -10,7 +10,7 @@ class Solution(object):
         while start<end:
             mid=(start+end)//2
         
-            if nums[mid] > nums[mid+1]:
+            if  nums[mid] > nums[mid+1] :
                 end=mid
             else:
                 start=mid+1
