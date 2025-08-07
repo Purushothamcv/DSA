@@ -15,9 +15,19 @@ class Solution(object):
             
             x.append(head.val)
             head=head.next
-        y=x[::-1]
-        if x==y:
-            return True
-        else:
-            return False 
+        i=0
+        j=len(x)-1
+        n=len(x)
+        while i<j:
+            if x[i]==x[j]:
+                i+=1
+                j-=1
+            else:
+                return False
+        return True 
+
+        # if x==y:
+        #     return True
+        # else:
+        #     return False 
         
