@@ -12,7 +12,7 @@ class Solution(object):
         maxcount=0
         for right in range(n):
             if nums[right]==0:
-                x+=1
+                x+=1    
             while x>k:
                 if nums[left]==0:
                     x-=1
