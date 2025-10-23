@@ -8,7 +8,7 @@ class Solution(object):
         len1, len2 = len(s1), len(s2)
         if len1 > len2:
             return False
-
+        
         # Step 1: Build frequency map for s1
         freq1 = {}
         for ch in s1:
