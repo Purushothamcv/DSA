@@ -7,32 +7,42 @@ class Solution(object):
         :type color: int
         :rtype: List[List[int]]
         """
-        # adj=[]
-        # n=len(image)
-        # for i in range(n):
-        #     adj.append([])
-        # for i in range(n):
-        #     for j in range(n):
-        #         if image[i][j]==1 and i!=j:
-        #             adj[i].append(j)
-        row=len(image)
-        column=len(image[0])
-        start_color=image[sr][sc]
-        if image[sr][sc]==color:
+
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+
+        # maxarea=0
+        # count=0
+        m=len(image)
+        n=len(image[0])
+        # visited=[[0]*n for _ in range(m)]
+        # m=len(grid)
+        # n=len(grid[0])
+        originalcolor=image[sr][sc]
+        if color==originalcolor:
             return image
-        def dfs(i,j):
-            if i<0 or i>=row or j<0 or j>=column or image[i][j]!=start_color:
+        def dfs(r,c):
+            # count+=1
+            if r<0 or c<0 or r>=m or c>=n:
+                return 
+            if image[r][c]!=originalcolor:
                 return
-            image[i][j]=color
-            dfs(i+1,j)
-            dfs(i-1,j)
-            dfs(i,j+1)
-            dfs(i,j-1)
-        dfs(sr,sc)
+            image[r][c]=color
+            # visited[r][c]=1
+            dfs(r+1,c)
+            dfs(r-1,c)
+            dfs(r,c+1)
+            dfs(r,c-1)
+        dfs(sr,sc)    
         return image
-
-
+        # for i in range(m):
+        #     for j in range(n):
+        #         if not visited[i][j] and grid[i][j]==1:
+        #             count+=1
+        #             dfs(i,j)
                     
+        # return count
         
-
         
