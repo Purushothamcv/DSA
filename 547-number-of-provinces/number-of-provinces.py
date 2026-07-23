@@ -4,28 +4,20 @@ class Solution(object):
         :type isConnected: List[List[int]]
         :rtype: int
         """
-        adj=[]
-        count=0
         n=len(isConnected)
+        count=0
+        visited=[0]*n
+        # node=0
+        def dfs(node):
+            visited[node]=1
+            for i in range(n):
+                if isConnected[node][i]==1 and visited[i]==0:
+                    dfs(i)
         for i in range(n):
-            adj.append([])
-        for i in range(n):
-            for j in range(n):
-                if isConnected[i][j]==1 and i!=j:
-                    adj[i].append(j)
-
-        vis=[0]*len(adj)
-        for i in range(n):
-            if vis[i]==0:
+            if not visited[i]:
+                dfs(i)
                 count+=1
-                self.dfs(i,vis,adj)
         return count
-    def dfs(self,node,vis,adj):
-        vis[node]=1
-        for edges in adj[node]:
-            if not vis[edges]:
-                self.dfs(edges,vis,adj)
-    
 
 
 
