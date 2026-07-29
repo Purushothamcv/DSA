@@ -4,30 +4,54 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        triplets=[]
+        # l=0
+        # r=len(nums)-1
+        # a=[]
+        # nums.sort()
+        # while l<r:
+        #     for i in range(l+1,r):
+        #         summ=nums[l]+nums[i]+nums[r]
+        #         if summ==0:
+        #             a.append([nums[l],nums[i],nums[r]])
+        #     if summ>0:
+        #         r-=1
+        #     else:
+        #         l+=1
+        #     # r-=1
+        #     # l+=1
+        # return a
+        # n=len(nums)
+        # a=[]
+        # for i in range(n):
+        #     for j in range(i+1,n):
+        #         for k in range(j+1,n):
+        #             if nums[i]+nums[j]+nums[k]==0:
+        #                 a.append([nums[i],nums[j],nums[k]])
+        # return a
+        n=len(nums)
         nums.sort()
-        for i,value in enumerate(nums):
-            if i>0 and (value==nums[i-1]):
+        a=[]
+        for i in range(len(nums)-2):
+            l=i+1
+            r=n-1
+            if i > 0 and nums[i] == nums[i - 1]:
                 continue
-            left=i+1
-            right=len(nums)-1
-            while left<right:
-                current_sum=value+nums[left]+nums[right]
-                if current_sum<0:
-                    left+=1
-                elif current_sum>0:
-                    right-=1
+            while l<r:
+                summ=nums[i]+nums[l]+nums[r]
+                if summ==0:
+                    a.append([nums[i],nums[l],nums[r]])
+                    l+=1
+                    r-=1
+                    while l<r and nums[l]==[nums[l-1]]:
+                        l+=1
+                    while l<r and nums[r]==nums[r+1]:
+                        r-=1
+                elif summ<0:
+                    l+=1
                 else:
-                    triplets.append([value,nums[left],nums[right]])
-                    left+=1
-               
-                    while (left<right) and nums[left]==nums[left-1]:
-                        left+=1
-                    while (left<right) and nums[right]==nums[right-1]:
-                        right-=1
-        return triplets
-
-
-
-
+                    r-=1
+        return a
                 
+                
+
+        
