@@ -4,9 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        a={}
+        a=set()
         for i in range(len(nums)):
             if nums[i] in a:
                 return True 
-            a[nums[i]]=i
+            a.add(nums[i])
         return False
