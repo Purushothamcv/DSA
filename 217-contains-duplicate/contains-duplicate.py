@@ -4,7 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        if len(set(nums))==len(nums):
-            return False 
-        else:
-            return True
+        a={}
+        for i in range(len(nums)):
+            if nums[i] in a:
+                return True 
+            a[nums[i]]=i
+        return False
